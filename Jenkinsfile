@@ -7,7 +7,9 @@ pipeline {
 
     stages {
         stage("code-checkout") {
+            steps {
             git 'https://github.com/ash2code/hello-world-cicd.git'
+        }
         }
 
         stage("code-build") {
