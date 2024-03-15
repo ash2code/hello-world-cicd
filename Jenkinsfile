@@ -6,12 +6,12 @@ pipeline {
     }
 
     environment {
-        SONAR_SERVER_URL = "http://100.25.17.74:9000"
-        SONAR_PROJECT_KEY = "hello-world-cicd"
-        SONAR_PROJECT_NAME = "hello-world-cicd"
+        SONAR_SERVER_URL = "http://52.23.178.72:9000"
+        SONAR_PROJECT_KEY = "hello-java"
+        SONAR_PROJECT_NAME = "hello-java"
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "http://100.25.17.74:8081" // Protocol should be included in the URL
+        NEXUS_URL = "http://52.23.178.72:8081" // Protocol should be included in the URL
         NEXUS_REPOSITORY = "hello-world-cicd"
         NEXUS_CREDENTIAL_ID = "nexus-user"
     }
@@ -36,7 +36,7 @@ pipeline {
                     -Dsonar.projectKey=${env.SONAR_PROJECT_KEY} \
                     -Dsonar.projectName=${env.SONAR_PROJECT_NAME} \
                     -Dsonar.host.url=${env.SONAR_SERVER_URL} \
-                    -Dsonar.login=sqp_8e399fa8886ee929f778f16d555f35f18ad31a27 // Use 'sonar.login' instead of 'sonar.token'
+                    -Dsonar.login=sqp_24efcbfebd34df82de6309a30ae0c515c5f727b5
                 """
             }
         }
