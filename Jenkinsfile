@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        SONAR_SERVER_URL = "http://54.82.24.158:9000"
+        SONAR_SERVER_URL = "http://52.86.44.25:9000"
         SONAR_PROJECT_KEY = "hello-world-cicd"
         SONAR_PROJECT_NAME = "hello-world-cicd"
     }
