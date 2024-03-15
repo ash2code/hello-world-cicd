@@ -39,5 +39,20 @@ pipeline {
                 }
             }
         }
+
+        stage("Nexus-Upload") {
+            steps {
+                script {
+                    nexusArtifactUploader (credentialsId: 'nexus-user', 
+                    groupId: 'hello-world-cicd', 
+                    nexusUrl: '52.86.44.25:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'http://52.86.44.25:8081/repository/hello-world-cicd/', 
+                    version: 'v1')
+            
+                }
+            }
+        }
     }
 }
