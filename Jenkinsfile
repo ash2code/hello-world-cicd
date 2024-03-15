@@ -40,19 +40,28 @@ pipeline {
             }
         }
 
-        stage("Nexus-Upload") {
-            steps {
-                script {
-                    nexusArtifactUploader (credentialsId: 'nexus-user', 
-                    groupId: 'hello-world-cicd', 
-                    nexusUrl: '52.86.44.25:8081', 
-                    nexusVersion: 'nexus3', 
-                    protocol: 'http', 
-                    repository: 'http://52.86.44.25:8081/repository/hello-world-cicd/', 
-                    version: 'v1')
-            
-                }
-            }
+         stage("Nexus-Upload") {
+      steps {
+        script {
+          def pom = readMavenPom file: 'pom.xml'
+          def groupId = pom.getGroupId()
+          def artifactId = pom.getArtifactId()
+          def version = pom.getVersion()
+          def packaging = pom.getPackaging() ?: 'jar' 
+
+          nexusArtifactUploader(
+            nexusVersion: 'nexus3',
+            protocol: 'http',
+            nexusUrl: 'http://52.86.44.25:8081',
+            groupId: groupId,
+            artifactId: artifactId,
+            version: version,
+            packaging: packaging,
+            repository: 'hello-world-cicd',
+            credentialsId: 'nexus-user'
+          )
         }
+      }
     }
+  }
 }
