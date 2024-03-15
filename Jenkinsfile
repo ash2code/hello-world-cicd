@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        SONAR_SERVER_URL = "http://52.86.44.25:9000"
+        SONAR_SERVER_URL = "http://100.25.17.74:9000"
         SONAR_PROJECT_KEY = "hello-world-cicd"
         SONAR_PROJECT_NAME = "hello-world-cicd"
     }
@@ -52,7 +52,7 @@ pipeline {
           nexusArtifactUploader(
             nexusVersion: 'nexus3',
             protocol: 'http',
-            nexusUrl: 'http://52.86.44.25:8081',
+            nexusUrl: 'http://100.25.17.74:8081',
             groupId: groupId,
             artifactId: artifactId,
             version: version,
